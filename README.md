@@ -53,12 +53,6 @@ Run the simulation to generate PLY files:
 uv run python main.py
 ```
 
-This will:
-- Load initial particle data from `sand_column.h5`
-- Run 100 simulation steps
-- Save PLY files to `sim_results/sand/` directory
-- Generate files named `sim_0000000000.ply`, `sim_0000000001.ply`, etc.
-
 ### Generating Animations
 
 After running the simulation, generate an animation from the PLY files:
@@ -83,27 +77,6 @@ uv run python generate_animation.py \
   --axes-size 0.2
 ```
 
-#### Advanced Options
-
-```bash
-# High-quality animation with custom visualization
-uv run python generate_animation.py \
-  --input-dir ./sim_results/sand \
-  --output sand_simulation.mp4 \
-  --fps 30 \
-  --width 1920 \
-  --height 1080 \
-  --point-size 3.0 \
-  --zoom 1.0 \
-  --quality 9 \
-  --show-axes \
-  --axes-size 0.15 \
-  --show-grid \
-  --grid-size 1.5 \
-  --grid-divisions 15 \
-  --bg-color 0.95 0.95 0.95
-```
-
 #### Generate GIF Instead
 
 ```bash
@@ -113,100 +86,10 @@ uv run python generate_animation.py \
   --width 800 \
   --height 600
 ```
-
-## Command-Line Options
-
-### Animation Generation (`generate_animation.py`)
-
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--input-dir` | Directory containing PLY files | `./sim_results/sand` |
-| `--output` | Output file name (MP4/GIF) | `animation.mp4` |
-| `--fps` | Frames per second | `30` |
-| `--width` | Image width in pixels | `1920` |
-| `--height` | Image height in pixels | `1080` |
-| `--point-size` | Point rendering size | `2.0` |
-| `--zoom` | Camera zoom level | `0.8` |
-| `--quality` | Video quality (1-10) | `8` |
-| `--bg-color` | Background RGB color (0-1) | `1.0 1.0 1.0` (white) |
-| `--show-axes` | Show 3D coordinate axes | `False` |
-| `--axes-size` | Size of coordinate axes | `0.1` |
-| `--show-grid` | Show ground grid at Z=0 | `False` |
-| `--grid-size` | Size of the grid | `1.0` |
-| `--grid-divisions` | Number of grid divisions | `10` |
-
-## Project Structure
-
-```
-wp_mpm/
-├── main.py                    # Main simulation script
-├── generate_animation.py      # Animation generation script
-├── pyproject.toml             # Project dependencies (uv)
-├── uv.lock                    # Locked dependencies
-├── warp-mpm/                  # Warp-MPM submodule
-│   ├── mpm_solver_warp.py     # MPM solver implementation
-│   ├── engine_utils.py        # Utility functions
-│   └── ...
-└── sim_results/               # Simulation outputs
-    └── sand/                  # PLY files from simulation
-        ├── sim_0000000000.ply
-        ├── sim_0000000001.ply
-        └── ...
-```
-
-## Visualization Features
-
-### Particle Coloring
-Particles are automatically colored with a height-based gradient:
-- **Blue**: Lower particles (smaller Z coordinate)
-- **Red**: Higher particles (larger Z coordinate)
-
-This makes it easy to visualize material flow and deformation.
-
-### 3D Axes
-When enabled with `--show-axes`, displays coordinate axes at the origin:
-- **Red**: X-axis
-- **Green**: Y-axis
-- **Blue**: Z-axis
-
-### Ground Grid
-When enabled with `--show-grid`, displays a reference grid on the XY plane at Z=0 to help visualize spatial scale and position.
-
-## Tips
-
-### Suppress Cleanup Warnings
-Some harmless cleanup warnings may appear at the end of animation generation. To suppress them:
-
-```bash
-# Suppress all stderr warnings
-uv run python generate_animation.py --output animation.mp4 2>/dev/null
-
-# Or filter specific warnings
-uv run python generate_animation.py --output animation.mp4 2>&1 | grep -v "WARNING:\|FEngine\|EGL"
-```
-
-### Optimizing Performance
-- Use smaller resolution (e.g., `--width 1280 --height 720`) for faster rendering
-- Reduce `--fps` for quicker animation generation
-- Adjust `--point-size` based on particle density
-
-## Troubleshooting
-
-### Issue: "No PLY files found"
-**Solution**: Make sure you've run `main.py` first to generate simulation data.
-
-### Issue: CUDA errors during simulation
-**Solution**: Ensure you have a CUDA-capable GPU and proper NVIDIA drivers installed.
-
-### Issue: Submodule is empty
-**Solution**: Initialize submodules:
-```bash
-git submodule update --init --recursive
-```
-
-### Issue: Animation generation is slow
-**Solution**: Reduce resolution, fps, or point size. Use a smaller subset of frames for testing.
-
+#### Example
+<p align="center">
+  <img src="animation.gif" width="600">
+</p>
 ## Acknowledgments
 
 This project uses:
