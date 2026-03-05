@@ -22,7 +22,7 @@ This repository contains the `warp-mpm` submodule. Clone with submodules using:
 ```bash
 # Clone with submodules in one command
 git clone --recurse-submodules git@github.com:chhsiao93/wp-mpm.git
-cd wp_mpm
+cd wp-mpm
 ```
 
 ### 3. Install Dependencies
