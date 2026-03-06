@@ -54,7 +54,7 @@ uv run main.py
 ```
 We are now supporting simulating different material at the same time.
 <p align="center">
-  <img src="animation.mp4" width="600">
+  <video src="animation.mp4" width="600" controls autoplay loop></video>
 </p>
 ### Generating Animations
 
