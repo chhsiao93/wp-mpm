@@ -50,9 +50,9 @@ This will automatically:
 Run the simulation to generate PLY files:
 
 ```bash
-uv run python main.py
+uv run main.py
 ```
-
+We are now supporting simulating different material at the same time.
 ### Generating Animations
 
 After running the simulation, generate an animation from the PLY files:
