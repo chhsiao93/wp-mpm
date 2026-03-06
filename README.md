@@ -53,9 +53,10 @@ Run the simulation to generate PLY files:
 uv run main.py
 ```
 We are now supporting simulating different material at the same time.
-<p align="center">
-  <video src="animation.mp4" width="600" controls autoplay loop></video>
-</p>
+
+<video src="https://github.com/user-attachments/assets/337362c2-c853-4cc5-8999-49a67ba3e9ef" width="600" controls autoplay loop></video>
+
+
 ### Generating Animations
 
 After running the simulation, generate an animation from the PLY files:
