@@ -6,5 +6,8 @@ dist/
 wheels/
 *.egg-info
 sim_results/
+visualization_clusters/
+*.mp4
 # Virtual environments
 .venv
+.vscode/
