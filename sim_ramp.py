@@ -88,6 +88,8 @@ plane_normal = (-0.5, 0.0, 1.0)
 mpm_solver.add_surface_collider(plane_center, plane_normal, 'slip', friction=ramp_friction)
 
 directory_to_save = './sim_results/ramp'
+import os
+os.makedirs(directory_to_save, exist_ok=True)
 
 for k in tqdm.tqdm(range(30000), desc="Simulating"):
     mpm_solver.p2g2p(k, 0.0001, device=dvc)
